@@ -11,5 +11,5 @@ class Virus {
 
   draw() {
     rect(this.x, this.y, this.size, this.size);
-  }
+  } 
 }

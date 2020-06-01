@@ -1,8 +1,18 @@
 let keyWorker;
 let virus = [];
 
+let keyworkerImage;
+let virusImage;
+let backgroundImg;
+
+function preload(){
+    // keyworkerImage = loadImage('./images/mariodoctor.jpeg');
+    // virusImage = loadImage('./images/coronavirus.jpeg');
+     backgroundImg = loadImage('coronavirus.jpeg');
+}
+
 function setup() {
-  createCanvas(800, 450);
+  createCanvas(800, 850);
   keyWorker = new KeyWorker();
 }
 

@@ -1,7 +1,7 @@
  class KeyWorker {
   constructor () {
     this.size = 50;
-    this.x = this.size;
+    this.x = 50;
     this.y = height - this.size;
     this.yVelocity = 0;
     this.gravity = 2;
@@ -25,6 +25,7 @@
   }
 
   draw() {
+    fill(255,204, 0)
     rect(this.x, this.y, this.size, this.size);
   }
 }
