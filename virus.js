@@ -1,8 +1,8 @@
 class Virus {
   constructor() {
-    this.r = 50;
+    this.size = 50;
     this.x = width;
-    this.y = height - this.r;
+    this.y = height - this.size;
   }
 
   move() {
@@ -10,6 +10,6 @@ class Virus {
   }
 
   draw() {
-    rect(this.x, this.y, this.r, this.r);
+    rect(this.x, this.y, this.size, this.size);
   }
 }

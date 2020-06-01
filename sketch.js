@@ -13,16 +13,21 @@ function keyPressed() {
 }
 
 function draw() {
-  if(random(1) < 0.01) {
+  if(random(1) < 0.005) {
     virus.push(new Virus());
   }
-
   background(168);
-  keyWorker.draw();
-  keyWorker.move();
-
   for(let v of virus) {
     v.move();
     v.draw();
+    if(keyWorker.hits(v)){
+        console.log("game over");
+        noLoop(); 
+    }
+
   }
+  keyWorker.draw();
+  keyWorker.move();
+
+  
 }
