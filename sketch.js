@@ -9,13 +9,11 @@ let level = 1;
 let timer = 300;
 let timeWas = 0;
 
-
 function preload(){
   virusGreenImg = loadImage('./images/virus-green.png');
   virusRedImg = loadImage('./images/virus-red.png');
   virusBlueImg = loadImage('./images/virus-blue.png');
 
-  // backgroundImg = loadImage()
   maleDoctor1 = loadImage('./images/doctor-male-1.png');
   maleDoctor2 = loadImage('./images/doctor-male-2.png');
   maleDoctor3 = loadImage('./images/doctor-male-3.png');
@@ -28,8 +26,6 @@ function preload(){
   asiaImg = loadImage('./images/asia.png');
   africaImg = loadImage('./images/africa.png');
   americaImg = loadImage('./images/america.png');
-
-
 }
 
 function setup() {
@@ -38,19 +34,21 @@ function setup() {
 }
 
 function createDropdown() {
+  // Gender Dropdown
   dropdown1 = createSelect(); 
-  dropdown2 = createSelect(); 
-
   dropdown1.position(300, 90); 
   dropdown1.option("Male"); 
   dropdown1.option("Female");
-
+  
+  // Skin colour Dropdown
+  dropdown2 = createSelect(); 
   dropdown2.position(400, 90); 
-  dropdown2.option("White Doctor"); 
-  dropdown2.option("Asian Doctor");
-  dropdown2.option("African Doctor"); 
-      
-  button = createButton('Choose');
+  dropdown2.option("Fair Skin"); 
+  dropdown2.option("Medium Skin");
+  dropdown2.option("Dark Skin"); 
+  
+  // Button
+  button = createButton('Start Playing');
   button.position(380,120); 
   button.mousePressed(()=> {
     keyWorker.changeCharacter();
@@ -123,6 +121,7 @@ function draw() {
         }
       }
     }
+    
     // Display KeyWorker
     keyWorker.draw();
     keyWorker.move();

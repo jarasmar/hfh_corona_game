@@ -10,7 +10,7 @@ class KeyWorker {
   }
 
 
-changeCharacter() {
+  changeCharacter() {
     if (dropdown1.value() === "Female" && dropdown2.value() === "White Doctor") {
       this.keyworker = femaleDoctor1;
     }
@@ -28,10 +28,7 @@ changeCharacter() {
     }
     if (dropdown1.value() === "Male" && dropdown2.value() === "African Doctor") {
       this.keyworker = maleDoctor3;
-    }
-    console.log("ChangeCharacter works")
-    console.log(this.keyworker)
-
+    } 
   }
 
   jump() {
@@ -47,7 +44,8 @@ changeCharacter() {
   }
 
   hits(virus){
-    return collideRectRect(this.x+40, this.y, this.size-40, this.size, virus.x, virus.y, virus.size, virus.size);
+    return collideRectRect(this.x+40, this.y, this.size-40, this.size, 
+                          virus.x, virus.y, virus.size, virus.size);
   }
 
   draw() {
