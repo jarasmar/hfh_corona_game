@@ -8,6 +8,7 @@
     this.gravity = 2;
     this.score = 0;
     this.level = 0;
+    this.keyworker = keyworkerImg
   }
 
   jump() {
@@ -24,6 +25,12 @@
     }
   }
 
+  changeCharacter(){
+    this.keyworker = dropdown.value();
+    console.log("Button is pressed");
+    console.log("Chosen Keyworker", this.keyworker)
+  }
+
   hits(virus){
     return collideRectRect(this.x, this.y, this.size, this.size, 
                           virus.x, virus.y ,virus.size, virus.size);
@@ -36,8 +43,6 @@
   }
 
   draw() {
-    // fill(255,204, 0)
-    // rect(this.x, this.y, this.size, this.size);
-    image(keyworkerImg, this.x, this.y, this.size, this.size);
+    image(this.keyworker, this.x, this.y, this.size, this.size);
   }
 }
