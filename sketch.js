@@ -1,5 +1,8 @@
 let keyWorker;
 let virus = [];
+
+let input;
+
 let score = 0;
 let level = 0;
 
@@ -9,16 +12,30 @@ let timeWas = 0;
 let keyworkerImg;
 let virusImg;
 let backgroundImg;
+let femaleDoctor;
 
 function preload(){
-  keyworkerImg = loadImage('mariodoctor.jpeg');
   virusImg = loadImage('coronavirus.jpeg');
   backgroundImg = loadImage("London.jpeg")
+  maleDoctor = loadImage('mariodoctor.jpeg');
+  femaleDoctor = loadImage('doctor-female.png');
 }
 
 function setup() {
   createCanvas(800, 450);    
   keyWorker = new KeyWorker();
+  input = createInput(' ')
+  dropdown = createSelect(); 
+    // Position the dropdown menu 
+    dropdown.position(350,90); 
+    // Set options 
+    dropdown.option("Male Doctor"); 
+    dropdown.option("Female Doctor"); 
+    button = createButton('Choose');
+    button.position(380,120); 
+    button.mousePressed(()=>{
+        keyWorker.changeCharacter()
+    })
 }
 
 function keyPressed() {
@@ -33,6 +50,7 @@ function draw() {
   background(166);
   text(`Score: ${score}`, 10, 10, 70, 80);
   text(`Level: ${level}`, 740, 10, 70, 80);
+  text(dropdown.value(), 340, 10, 70, 80);
 
   // Display KeyWorker
   keyWorker.draw();
@@ -52,6 +70,7 @@ function draw() {
     // Game Over if Collision
     if(keyWorker.hits(v)){
       console.log("Game Over");
+      text("Game Over", 240, 500, 100, 80);
       noLoop(); 
     }
 
