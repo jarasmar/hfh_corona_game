@@ -6,16 +6,31 @@
     this.y = height - this.size;
     this.yVelocity = 0;
     this.gravity = 2;
-    this.keyworker = maleDoctor;
+    this.keyworker = maleDoctor1;
   }
 
 changeCharacter() {
-    if (dropdown.value() === "Female Doctor") {
-      this.keyworker = femaleDoctor;
+    if (dropdown1.value() === "Female" && dropdown2.value() === "White Doctor") {
+      this.keyworker = femaleDoctor1;
     }
-    if (dropdown.value() === "Male Doctor") {
-      this.keyworker = maleDoctor;
+    if (dropdown1.value() === "Male" && dropdown2.value() === "White Doctor") {
+      this.keyworker = maleDoctor1;
     }
+    if (dropdown1.value() === "Female" && dropdown2.value() === "Asian Doctor") {
+      this.keyworker = femaleDoctor2;
+    }
+    if (dropdown1.value() === "Male" && dropdown2.value() === "Asian Doctor") {
+      this.keyworker = maleDoctor2;
+    }
+    if (dropdown1.value() === "Female" && dropdown2.value() === "African Doctor") {
+      this.keyworker = femaleDoctor3;
+    }
+    if (dropdown1.value() === "Male" && dropdown2.value() === "African Doctor") {
+      this.keyworker = maleDoctor3;
+    }
+    console.log("ChangeCharacter works")
+    console.log(this.keyworker)
+
   }
 
   jump() {
