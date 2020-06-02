@@ -104,7 +104,7 @@ function draw() {
     // Update Score and Level
     if (v.x == 0) {
       score += 1;
-      if (score % 5 == 0) {
+      if (score % 6 == 0) {
         level += 1;
         timer -= 50;
       }
