@@ -16,3 +16,5 @@ class Virus {
     image(v, this.x, this.y, this.size, this.size);
   }
 }
+
+

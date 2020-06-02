@@ -7,34 +7,50 @@ let level = 1;
 let timer = 300;
 let timeWas = 0;
 
+
 function preload(){
   virusGreenImg = loadImage('./images/virus-green.png');
   virusRedImg = loadImage('./images/virus-red.png');
   virusBlueImg = loadImage('./images/virus-blue.png');
-  
+
+  // backgroundImg = loadImage()
+  maleDoctor1 = loadImage('./images/doctor-male-1.png');
+  maleDoctor2 = loadImage('./images/doctor-male-2.png');
+  maleDoctor3 = loadImage('./images/doctor-male-3.png');
+
+  femaleDoctor1 = loadImage('./images/doctor-female-1.png');
+  femaleDoctor2 = loadImage('./images/doctor-female-2.png');
+  femaleDoctor3 = loadImage('./images/doctor-female-3.png');
+   
   europeImg = loadImage('./images/europe.png');
   asiaImg = loadImage('./images/asia.png');
   africaImg = loadImage('./images/africa.png');
   americaImg = loadImage('./images/america.png');
-  
-  maleDoctor = loadImage('./images/doctor-male-1.png');
-  femaleDoctor = loadImage('./images/doctor-female-1.png');
+
+
 }
 
 function setup() {
   createCanvas(1000, 500);
   keyWorker = new KeyWorker();
-  dropdown = createSelect();
-  // Position the dropdown menu
-  dropdown.position(350,90);
-  // Set options
-  dropdown.option("Male Doctor");
-  dropdown.option("Female Doctor");
-  button = createButton('Choose');
-  button.position(380,120);
-  button.mousePressed(() => {
-    keyWorker.changeCharacter();
-  })
+
+  dropdown1 = createSelect(); 
+  dropdown2 = createSelect(); 
+
+  dropdown1.position(300, 90); 
+    dropdown1.option("Male"); 
+    dropdown1.option("Female");
+
+  dropdown2.position(400, 90); 
+    dropdown2.option("White Doctor"); 
+    dropdown2.option("Asian Doctor");
+    dropdown2.option("African Doctor"); 
+      
+    button = createButton('Choose');
+    button.position(380,120); 
+    button.mousePressed(()=> {
+      keyWorker.changeCharacter()
+    })
 }
 
 function keyPressed() {
@@ -65,7 +81,7 @@ function draw() {
   
   text(`Score: ${score}`, 10, 10, 70, 80);
   text(`Level: ${level}`, 740, 10, 70, 80);
-  text(dropdown.value(), 340, 10, 70, 80);
+  text(dropdown2.value(), 200, 10, 70, 80);
 
 
   // Display Virus
@@ -82,8 +98,8 @@ function draw() {
     // Game Over if Collision
     if(keyWorker.hits(v)){
       console.log("Game Over");
-      text("Game Over", 240, 500, 100, 80);
-      noLoop();
+      text("Game Over", 240, 200, 100, 80);
+      noLoop(); 
     }
 
     // Update Score and Level
