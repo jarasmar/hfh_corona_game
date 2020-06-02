@@ -1,3 +1,5 @@
+let started = false;
+
 let keyWorker;
 let virus = [];
 
@@ -49,8 +51,14 @@ function setup() {
     button = createButton('Choose');
     button.position(380,120); 
     button.mousePressed(()=> {
-      keyWorker.changeCharacter()
+      keyWorker.changeCharacter();
+      start();
     })
+}
+
+function start(){
+  started = true;
+  loop();
 }
 
 function keyPressed() {
@@ -75,43 +83,45 @@ function loadBackground() {
 }
 
 function draw() {
-  // Display Background features
-  background(166);
-  background(loadBackground());
-  
-  text(`Score: ${score}`, 10, 10, 70, 80);
-  text(`Level: ${level}`, 740, 10, 70, 80);
-  text(dropdown2.value(), 200, 10, 70, 80);
+  if (started) {
+    // Display Background features
+    background(166);
+    background(loadBackground());
+    
+    text(`Score: ${score}`, 10, 10, 70, 80);
+    text(`Level: ${level}`, 740, 10, 70, 80);
+    text(dropdown2.value(), 200, 10, 70, 80);
 
 
-  // Display Virus
-  if (frameCount > timeWas + timer && timer != 0) {
-    timeWas = frameCount;
-    timer = random(100, timer);
-    virus.push(new Virus());
-  }
-
-  for(let v of virus) {
-    v.move();
-    v.draw();
-
-    // Game Over if Collision
-    if(keyWorker.hits(v)){
-      console.log("Game Over");
-      text("Game Over", 240, 200, 100, 80);
-      noLoop(); 
+    // Display Virus
+    if (frameCount > timeWas + timer && timer != 0) {
+      timeWas = frameCount;
+      timer = random(100, timer);
+      virus.push(new Virus());
     }
 
-    // Update Score and Level
-    if (v.x == 0) {
-      score += 1;
-      if (score % 5 == 0) {
-        level += 1;
-        timer -= 50;
+    for(let v of virus) {
+      v.move();
+      v.draw();
+
+      // Game Over if Collision
+      if(keyWorker.hits(v)){
+        console.log("Game Over");
+        text("Game Over", 240, 200, 100, 80);
+        noLoop(); 
+      }
+
+      // Update Score and Level
+      if (v.x == 0) {
+        score += 1;
+        if (score % 5 == 0) {
+          level += 1;
+          timer -= 50;
+        }
       }
     }
+    // Display KeyWorker
+    keyWorker.draw();
+    keyWorker.move();
   }
-  // Display KeyWorker
-  keyWorker.draw();
-  keyWorker.move();
 }
