@@ -1,5 +1,7 @@
 let keyWorker;
 let virus = [];
+let score = 0;
+let level = 0;
 
 let keyworkerImg;
 let virusImg;
@@ -12,7 +14,7 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(800, 850);    
+  createCanvas(800, 450);    
   keyWorker = new KeyWorker();
 }
 
@@ -27,20 +29,28 @@ function draw() {
     virus.push(new Virus());
   }
 
-  background(backgroundImg);
-  text(`Score: ${keyWorker.score}`, 10, 10, 70, 80);
-  text(`Level: ${keyWorker.level}`, 740, 10, 70, 80);
+  // background(backgroundImg);
+  background(166);
+  text(`Score: ${score}`, 10, 10, 70, 80);
+  text(`Level: ${level}`, 740, 10, 70, 80);
 
   for(let v of virus) {
     v.move();
     v.draw();
+    
     if(keyWorker.hits(v)){
       console.log("Game Over");
       noLoop(); 
     }
 
-  }
+    // add one point for every virus gone
+    if (v.x == 0) {
+      score += 1;
+    }
+  } 
   
   keyWorker.draw();
   keyWorker.move();
+ 
 }
+
