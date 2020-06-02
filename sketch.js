@@ -58,10 +58,25 @@ function keyPressed() {
   }
 }
 
+function loadBackground() {
+  if (level == 0) {
+    return asiaImg;
+  }
+  if (level == 1) {
+    return europeImg;
+  }
+  if (level == 2) {
+    return africaImg;
+  }
+  if (level == 3) {
+    return americaImg;
+  }
+}
+
 function draw() {
   // Display Background features
   background(166);
-  background(backgroundImg);
+  background(loadBackground());
   
   text(`Score: ${score}`, 10, 10, 70, 80);
   text(`Level: ${level}`, 740, 10, 70, 80);
