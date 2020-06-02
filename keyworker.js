@@ -5,11 +5,14 @@
     this.y = height - this.size;
     this.yVelocity = 0;
     this.gravity = 2;
+    this.score = 0
   }
 
   jump() {
     if(this.y == height - this.size){
     this.yVelocity = -35; 
+    this.score += 1
+
     }
   }
 
@@ -25,7 +28,10 @@
   }
 
   draw() {
-    fill(255,204, 0)
-    rect(this.x, this.y, this.size, this.size);
+    // fill(255,204, 0)
+    // rect(this.x, this.y, this.size, this.size);
+    image(keyworkerImage, this.x, this.y, this.size, this.size);
+
+
   }
 }
