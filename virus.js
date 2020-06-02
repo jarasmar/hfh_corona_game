@@ -11,6 +11,6 @@ class Virus {
   }
 
   draw() {
-    image(virusImg, this.x, this.y, this.size, this.size);
+    image(greenVirus, this.x, this.y, this.size, this.size);
   } 
 }
