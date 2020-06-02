@@ -13,7 +13,10 @@ let virusGreenImg;
 let virusRedImg;
 let virusBlueImg;
 
-let backgroundImg;
+let europeImg;
+let asiaImg;
+let africaImg;
+let americaImg;
 
 let femaleDoctor;
 let maleDoctor;
@@ -22,7 +25,12 @@ function preload(){
   virusGreenImg = loadImage('./images/virus-green.png');
   virusRedImg = loadImage('./images/virus-red.png');
   virusBlueImg = loadImage('./images/virus-blue.png');
-  // backgroundImg = loadImage()
+  
+  europeImg = loadImage('./images/europe.png');
+  asiaImg = loadImage('./images/asia.png');
+  africaImg = loadImage('./images/africa.png');
+  americaImg = loadImage('./images/america.png');
+  
   maleDoctor = loadImage('./images/doctor-male-1.png');
   femaleDoctor = loadImage('./images/doctor-female-1.png');
 }
@@ -52,8 +60,9 @@ function keyPressed() {
 
 function draw() {
   // Display Background features
-  // background(backgroundImg);
   background(166);
+  background(backgroundImg);
+  
   text(`Score: ${score}`, 10, 10, 70, 80);
   text(`Level: ${level}`, 740, 10, 70, 80);
   text(dropdown.value(), 340, 10, 70, 80);
