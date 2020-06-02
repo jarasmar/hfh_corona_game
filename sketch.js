@@ -25,12 +25,17 @@ function setup() {
   createCanvas(800, 450);    
   keyWorker = new KeyWorker();
   input = createInput(' ')
-  dropdown = createSelect(); 
-    // Position the dropdown menu 
-    dropdown.position(350,90); 
-    // Set options 
-    dropdown.option("Male Doctor"); 
-    dropdown.option("Female Doctor"); 
+  dropdown1 = createSelect(); 
+  dropdown2 = createSelect(); 
+
+    dropdown1.position(350,90); 
+     dropdown1.option("Doctor"); 
+     dropdown1.option("Doctor"); 
+    
+    dropdown2.position(300,70); 
+     dropdown1.option("Male "); 
+     dropdown1.option("Female "); 
+    
     button = createButton('Choose');
     button.position(380,120); 
     button.mousePressed(()=>{
