@@ -15,10 +15,10 @@ let backgroundImg;
 let femaleDoctor;
 
 function preload(){
-  virusImg = loadImage('coronavirus.jpeg');
-  backgroundImg = loadImage("London.jpeg")
-  maleDoctor = loadImage('mariodoctor.jpeg');
-  femaleDoctor = loadImage('doctor-female.png');
+  virusImg = loadImage('./images/virus-green.png');
+  // backgroundImg = loadImage()
+  maleDoctor = loadImage('./images/doctor-male-1.png');
+  femaleDoctor = loadImage('./images/doctor-female-1.png');
 }
 
 function setup() {
