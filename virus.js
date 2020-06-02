@@ -1,4 +1,5 @@
 class Virus {
+  
   constructor() {
     this.size = 50;
     this.x = width;
@@ -10,6 +11,6 @@ class Virus {
   }
 
   draw() {
-    rect(this.x, this.y, this.size, this.size);
-  }
+    image(virusImg, this.x, this.y, this.size, this.size);
+  } 
 }
