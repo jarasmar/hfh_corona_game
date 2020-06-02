@@ -33,27 +33,29 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(1000, 500);
+  createCanvas(1000, 500).center();
   keyWorker = new KeyWorker();
+}
 
+function createDropdown() {
   dropdown1 = createSelect(); 
   dropdown2 = createSelect(); 
 
   dropdown1.position(300, 90); 
-    dropdown1.option("Male"); 
-    dropdown1.option("Female");
+  dropdown1.option("Male"); 
+  dropdown1.option("Female");
 
   dropdown2.position(400, 90); 
-    dropdown2.option("White Doctor"); 
-    dropdown2.option("Asian Doctor");
-    dropdown2.option("African Doctor"); 
+  dropdown2.option("White Doctor"); 
+  dropdown2.option("Asian Doctor");
+  dropdown2.option("African Doctor"); 
       
-    button = createButton('Choose');
-    button.position(380,120); 
-    button.mousePressed(()=> {
-      keyWorker.changeCharacter();
-      start();
-    })
+  button = createButton('Choose');
+  button.position(380,120); 
+  button.mousePressed(()=> {
+    keyWorker.changeCharacter();
+    start();
+  })
 }
 
 function start(){
@@ -83,15 +85,16 @@ function loadBackground() {
 }
 
 function draw() {
-  if (started) {
+  if (started === false) {
+    createDropdown();
+  }
+  if (started === true) {
     // Display Background features
     background(166);
     background(loadBackground());
     
     text(`Score: ${score}`, 10, 10, 70, 80);
     text(`Level: ${level}`, 740, 10, 70, 80);
-    text(dropdown2.value(), 200, 10, 70, 80);
-
 
     // Display Virus
     if (frameCount > timeWas + timer && timer != 0) {
