@@ -6,37 +6,21 @@
     this.y = height - this.size;
     this.yVelocity = 0;
     this.gravity = 2;
-    this.score = 0;
-    this.level = 0;
-    this.keyworker = maleDoctor
+    this.keyworker = maleDoctor;
   }
 
-// function preload(){
-// }
-
-changeCharacter(){
-    if(dropdown.value() === "Female Doctor"){
+changeCharacter() {
+    if (dropdown.value() === "Female Doctor") {
       this.keyworker = femaleDoctor;
     }
-    if(dropdown.value === "Male Doctor"){
-      this.keyworker = maleDoctor
+    if (dropdown.value() === "Male Doctor") {
+      this.keyworker = maleDoctor;
     }
-    draw()
-    console.log("Chosen KeywWorker", this.keyworker)
-
   }
 
   jump() {
     if (this.y == height - this.size) {
-        this.yVelocity = -35; 
-      if (this.score < 6) {
-        this.score += 1;
-      } else {
-        this.score = 0;
-      }
-      if (this.score >= 6) {
-        this.level += 1;
-      }
+      this.yVelocity = -35; 
     }
   }
 
@@ -53,6 +37,5 @@ changeCharacter(){
 
   draw() {
     image(this.keyworker, this.x, this.y, this.size, this.size);
-    console.log("Keyworker Draw Run")
   }
 }
