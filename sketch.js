@@ -30,8 +30,9 @@ function draw() {
   }
 
   background(backgroundImg);
-//   text("Score : ", 10,10,70,80)
-  text(keyWorker.score , 10,10,70,80)
+  text(`Score: ${keyWorker.score}` , 10,10,70,80)
+  text(`Level: ${keyWorker.level}` , 740,10,70,80)
+
 
   for(let v of virus) {
     v.move();
