@@ -3,7 +3,7 @@ let virus = [];
 let score = 0;
 let level = 0;
 
-let timer = 120;
+let timer = 300;
 let timeWas = 0;
 
 let keyworkerImg;
@@ -41,7 +41,7 @@ function draw() {
   // Display Virus
   if (frameCount > timeWas + timer && timer != 0) {
     timeWas = frameCount;
-    timer = random(100, 400);
+    // timer = random(100, timer);
     virus.push(new Virus());
   }
 
@@ -58,8 +58,9 @@ function draw() {
     // Update Score and Level
     if (v.x == 0) {
       score += 1;
-      if (score % 6 == 0) {
+      if (score % 3 == 0) {
         level += 1;
+        timer -= 50;
       }
     }
   } 
