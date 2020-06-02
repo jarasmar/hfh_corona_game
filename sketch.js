@@ -13,6 +13,7 @@ let keyworkerImg;
 let virusImg;
 let backgroundImg;
 let femaleDoctor;
+let maleDoctor;
 
 function preload(){
   virusImg = loadImage('./images/virus-green.png');
@@ -26,16 +27,16 @@ function setup() {
   keyWorker = new KeyWorker();
   // input = createInput(' ')
   dropdown = createSelect();
-    // Position the dropdown menu
-    dropdown.position(350,90);
-    // Set options
-    dropdown.option("Male Doctor");
-    dropdown.option("Female Doctor");
-    button = createButton('Choose');
-    button.position(380,120);
-    button.mousePressed(()=>{
-        keyWorker.changeCharacter()
-    })
+  // Position the dropdown menu
+  dropdown.position(350,90);
+  // Set options
+  dropdown.option("Male Doctor");
+  dropdown.option("Female Doctor");
+  button = createButton('Choose');
+  button.position(380,120);
+  button.mousePressed(() => {
+    keyWorker.changeCharacter();
+  })
 }
 
 function keyPressed() {
@@ -52,9 +53,6 @@ function draw() {
   text(`Level: ${level}`, 740, 10, 70, 80);
   text(dropdown.value(), 340, 10, 70, 80);
 
-  // Display KeyWorker
-  keyWorker.draw();
-  keyWorker.move();
 
   // Display Virus
   if (frameCount > timeWas + timer && timer != 0) {
@@ -83,4 +81,7 @@ function draw() {
       }
     }
   }
+  // Display KeyWorker
+  keyWorker.draw();
+  keyWorker.move();
 }
