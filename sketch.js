@@ -1,25 +1,11 @@
 let keyWorker;
 let virus = [];
 
-// let input;
-
 let score = 0;
-let level = 0;
+let level = 1;
 
 let timer = 300;
 let timeWas = 0;
-
-let virusGreenImg;
-let virusRedImg;
-let virusBlueImg;
-
-let europeImg;
-let asiaImg;
-let africaImg;
-let americaImg;
-
-let femaleDoctor;
-let maleDoctor;
 
 function preload(){
   virusGreenImg = loadImage('./images/virus-green.png');
@@ -38,7 +24,6 @@ function preload(){
 function setup() {
   createCanvas(1000, 500);
   keyWorker = new KeyWorker();
-  // input = createInput(' ')
   dropdown = createSelect();
   // Position the dropdown menu
   dropdown.position(350,90);
@@ -59,16 +44,16 @@ function keyPressed() {
 }
 
 function loadBackground() {
-  if (level == 0) {
+  if ((level == 1) || (level == 5)) {
     return asiaImg;
   }
-  if (level == 1) {
+  if ((level == 2) || (level == 6)) {
     return europeImg;
   }
-  if (level == 2) {
+  if ((level == 3) || (level == 7)) {
     return africaImg;
   }
-  if (level == 3) {
+  if ((level == 4) || (level == 8)) {
     return americaImg;
   }
 }
@@ -104,7 +89,7 @@ function draw() {
     // Update Score and Level
     if (v.x == 0) {
       score += 1;
-      if (score % 6 == 0) {
+      if (score % 5 == 0) {
         level += 1;
         timer -= 50;
       }
