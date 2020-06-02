@@ -30,6 +30,9 @@ function preload(){
 
 function setup() {
   createCanvas(1000, 500).center();
+  textSize(30);
+  textFont("Courier New");
+  textStyle(BOLD);
   keyWorker = new KeyWorker();
 }
 
@@ -91,8 +94,8 @@ function draw() {
     background(166);
     background(loadBackground());
     
-    text(`Score: ${score}`, 10, 10, 70, 80);
-    text(`Level: ${level}`, 740, 10, 70, 80);
+    text(`Score: ${score}`, 10, 10, 200, 100);
+    text(`Level: ${level}`, 830, 10, 200, 100);
 
     // Display Virus
     if (frameCount > timeWas + timer && timer != 0) {
@@ -108,7 +111,7 @@ function draw() {
       // Game Over if Collision
       if(keyWorker.hits(v)){
         console.log("Game Over");
-        text("Game Over", 240, 200, 100, 80);
+        text("Game Over", 420, 200, 200, 80);
         noLoop(); 
       }
 
@@ -121,7 +124,7 @@ function draw() {
         }
       }
     }
-    
+
     // Display KeyWorker
     keyWorker.draw();
     keyWorker.move();
