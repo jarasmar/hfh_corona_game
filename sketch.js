@@ -43,9 +43,12 @@ function draw() {
       noLoop(); 
     }
 
-    // add one point for every virus gone
+    // update score and level
     if (v.x == 0) {
       score += 1;
+      if (score % 6 == 0) {
+        level += 1;
+      }
     }
   } 
   
@@ -53,4 +56,3 @@ function draw() {
   keyWorker.move();
  
 }
-
