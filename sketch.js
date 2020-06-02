@@ -1,25 +1,17 @@
 let keyWorker;
 let virus = [];
 
-let input;
-
 let score = 0;
-let level = 0;
+let level = 1;
 
 let timer = 300;
 let timeWas = 0;
 
-let keyworkerImg; 
-let virusImg;
-let backgroundImg;
-let femaleDoctor;
-let maleDoctor;
-
 
 function preload(){
-  blueVirus = loadImage('./images/virus-blue.png');
-  greenVirus = loadImage('./images/virus-green.png');
-  redVirus = loadImage('./images/virus-red.png');
+  virusGreenImg = loadImage('./images/virus-green.png');
+  virusRedImg = loadImage('./images/virus-red.png');
+  virusBlueImg = loadImage('./images/virus-blue.png');
 
   // backgroundImg = loadImage()
   maleDoctor1 = loadImage('./images/doctor-male-1.png');
@@ -29,11 +21,17 @@ function preload(){
   femaleDoctor1 = loadImage('./images/doctor-female-1.png');
   femaleDoctor2 = loadImage('./images/doctor-female-2.png');
   femaleDoctor3 = loadImage('./images/doctor-female-3.png');
+   
+  europeImg = loadImage('./images/europe.png');
+  asiaImg = loadImage('./images/asia.png');
+  africaImg = loadImage('./images/africa.png');
+  americaImg = loadImage('./images/america.png');
+
 
 }
 
 function setup() {
-  createCanvas(800, 450);    
+  createCanvas(1000, 500);
   keyWorker = new KeyWorker();
 
   dropdown1 = createSelect(); 
@@ -61,17 +59,30 @@ function keyPressed() {
   }
 }
 
+function loadBackground() {
+  if ((level == 1) || (level == 5)) {
+    return asiaImg;
+  }
+  if ((level == 2) || (level == 6)) {
+    return europeImg;
+  }
+  if ((level == 3) || (level == 7)) {
+    return africaImg;
+  }
+  if ((level == 4) || (level == 8)) {
+    return americaImg;
+  }
+}
+
 function draw() {
   // Display Background features
-  // background(backgroundImg);
   background(166);
+  background(loadBackground());
+  
   text(`Score: ${score}`, 10, 10, 70, 80);
   text(`Level: ${level}`, 740, 10, 70, 80);
   text(dropdown2.value(), 200, 10, 70, 80);
 
-  // Display KeyWorker
-  keyWorker.draw();
-  keyWorker.move();
 
   // Display Virus
   if (frameCount > timeWas + timer && timer != 0) {
@@ -83,7 +94,7 @@ function draw() {
   for(let v of virus) {
     v.move();
     v.draw();
-    
+
     // Game Over if Collision
     if(keyWorker.hits(v)){
       console.log("Game Over");
@@ -99,5 +110,8 @@ function draw() {
         timer -= 50;
       }
     }
-  } 
+  }
+  // Display KeyWorker
+  keyWorker.draw();
+  keyWorker.move();
 }

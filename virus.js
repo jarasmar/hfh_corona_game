@@ -1,9 +1,10 @@
 class Virus {
-  
+
   constructor() {
     this.size = 50;
     this.x = width;
     this.y = height - this.size;
+    this.virusTypes = [virusGreenImg, virusRedImg, virusBlueImg]
   }
 
   move() {
@@ -11,6 +12,9 @@ class Virus {
   }
 
   draw() {
-    image(greenVirus, this.x, this.y, this.size, this.size);
-  } 
+    let v = random(this.virusTypes);
+    image(v, this.x, this.y, this.size, this.size);
+  }
 }
+
+

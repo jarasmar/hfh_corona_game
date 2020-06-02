@@ -1,13 +1,14 @@
- class KeyWorker {
+class KeyWorker {
   
   constructor () {
-    this.size = 150;
+    this.size = 100;
     this.x = 50;
     this.y = height - this.size;
     this.yVelocity = 0;
     this.gravity = 2;
     this.keyworker = maleDoctor1;
   }
+
 
 changeCharacter() {
     if (dropdown1.value() === "Female" && dropdown2.value() === "White Doctor") {
@@ -34,8 +35,8 @@ changeCharacter() {
   }
 
   jump() {
-    if (this.y == height - this.size) {
-      this.yVelocity = -35; 
+   if (this.y == height - this.size) {
+     this.yVelocity = -35;
     }
   }
 
@@ -46,8 +47,7 @@ changeCharacter() {
   }
 
   hits(virus){
-    return collideRectRect(this.x, this.y, this.size, this.size, 
-                          virus.x, virus.y ,virus.size, virus.size);
+    return collideRectRect(this.x+40, this.y, this.size-40, this.size, virus.x, virus.y, virus.size, virus.size);
   }
 
   draw() {
