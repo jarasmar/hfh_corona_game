@@ -9,14 +9,19 @@ let level = 0;
 let timer = 300;
 let timeWas = 0;
 
-let keyworkerImg;
-let virusImg;
+let virusGreenImg;
+let virusRedImg;
+let virusBlueImg;
+
 let backgroundImg;
+
 let femaleDoctor;
 let maleDoctor;
 
 function preload(){
-  virusImg = loadImage('./images/virus-green.png');
+  virusGreenImg = loadImage('./images/virus-green.png');
+  virusRedImg = loadImage('./images/virus-red.png');
+  virusBlueImg = loadImage('./images/virus-blue.png');
   // backgroundImg = loadImage()
   maleDoctor = loadImage('./images/doctor-male-1.png');
   femaleDoctor = loadImage('./images/doctor-female-1.png');
