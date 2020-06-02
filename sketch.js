@@ -1,5 +1,10 @@
 let keyWorker;
 let virus = [];
+let score = 0;
+let level = 0;
+
+let timer = 300;
+let timeWas = 0;
 
 let keyworkerImg;
 let virusImg;
@@ -12,7 +17,7 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(800, 850);    
+  createCanvas(800, 450);    
   keyWorker = new KeyWorker();
 }
 
@@ -23,24 +28,40 @@ function keyPressed() {
 }
 
 function draw() {
-  if(random(1) < 0.005) {
+  // Display Background features
+  // background(backgroundImg);
+  background(166);
+  text(`Score: ${score}`, 10, 10, 70, 80);
+  text(`Level: ${level}`, 740, 10, 70, 80);
+
+  // Display KeyWorker
+  keyWorker.draw();
+  keyWorker.move();
+
+  // Display Virus
+  if (frameCount > timeWas + timer && timer != 0) {
+    timeWas = frameCount;
+    timer = random(100, timer);
     virus.push(new Virus());
   }
-
-  background(backgroundImg);
-  text(`Score: ${keyWorker.score}`, 10, 10, 70, 80);
-  text(`Level: ${keyWorker.level}`, 740, 10, 70, 80);
 
   for(let v of virus) {
     v.move();
     v.draw();
+    
+    // Game Over if Collision
     if(keyWorker.hits(v)){
       console.log("Game Over");
       noLoop(); 
     }
 
-  }
-  
-  keyWorker.draw();
-  keyWorker.move();
+    // Update Score and Level
+    if (v.x == 0) {
+      score += 1;
+      if (score % 5 == 0) {
+        level += 1;
+        timer -= 50;
+      }
+    }
+  } 
 }
