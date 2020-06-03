@@ -1,5 +1,5 @@
 class KeyWorker {
-  
+
   constructor () {
     this.size = 100;
     this.x = 50;
@@ -35,6 +35,7 @@ changeCharacter() {
   }
 
   jump() {
+  jumpSound.play();
    if (this.y == height - this.size) {
      this.yVelocity = -35;
     }
