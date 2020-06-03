@@ -11,13 +11,13 @@ let timeWas = 0;
 
 function preload(){
 
-  jumpSound = loadSound('./sounds/jump.mp3');
-  pointSound = loadSound('./sounds/point.mp3');
-  gameOverSound = loadSound('./sounds/game-over.mp3');
-  europeSound = loadSound('./sounds/europe.mp3');
-  asiaSound = loadSound('./sounds/asia.mp3');
-  africaSound = loadSound('./sounds/africa.mp3');
-  americaSound = loadSound('./sounds/america.mp3');
+  // jumpSound = loadSound('./sounds/jump.mp3');
+  // pointSound = loadSound('./sounds/point.mp3');
+  // gameOverSound = loadSound('./sounds/game-over.mp3');
+  // europeSound = loadSound('./sounds/europe.mp3');
+  // asiaSound = loadSound('./sounds/asia.mp3');
+  // africaSound = loadSound('./sounds/africa.mp3');
+  // americaSound = loadSound('./sounds/america.mp3');
 
   virusGreenImg = loadImage('./images/virus-green.png');
   virusRedImg = loadImage('./images/virus-red.png');
@@ -129,7 +129,7 @@ function draw() {
 
     // Game Over if Collision
     if(keyWorker.hits(v)){
-      gameOverSound.play();
+      // gameOverSound.play();
       noLoop();
       gameOver = select('#gameOver');
       gameOver.show();
@@ -143,33 +143,33 @@ function draw() {
 
     // Update Score and Level
     if (v.x == 0) {
-      pointSound.play();
+      // pointSound.play();
       score += 1;
       if (score % 2 == 0) {
         level += 1;
 
-        if (level === 2) {
-          if (!europeSound.isPlaying()) {
-            europeSound.play();
-            europeSound.setVolume(0.1);
-          }
-        }
+        // if (level === 2) {
+        //   if (!europeSound.isPlaying()) {
+        //     europeSound.play();
+        //     europeSound.setVolume(0.1);
+        //   }
+        // }
         
-        if (level === 3) {
-          if (!africaSound.isPlaying()) {
-            africaSound.play();
-            africaSound.setVolume(0.1);
-          }
-        }
+        // if (level === 3) {
+        //   if (!africaSound.isPlaying()) {
+        //     africaSound.play();
+        //     africaSound.setVolume(0.1);
+        //   }
+        // }
 
-        if (level === 4) {
-          if (!americaSound.isPlaying()) {
-            americaSound.play();
-            americaSound.setVolume(0.1);
-          }
-        }
+        // if (level === 4) {
+        //   if (!americaSound.isPlaying()) {
+        //     americaSound.play();
+        //     americaSound.setVolume(0.1);
+        //   }
+        // }
 
-        timer -= 50;
+        // timer -= 50;
       }
     }
     // Display KeyWorker
