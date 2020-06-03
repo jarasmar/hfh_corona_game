@@ -34,24 +34,19 @@ function setup() {
   textSize(30);
   textFont("Courier New");
   textStyle(BOLD);
+  
   keyWorker = new KeyWorker();
 
-  dropdown1 = createSelect(); 
-  dropdown2 = createSelect(); 
-
-  dropdown1.position(300, 90); 
-  dropdown1.option("Male"); 
-  dropdown1.option("Female");
-
-  dropdown2.position(400, 90); 
-  dropdown2.option("White Doctor"); 
-  dropdown2.option("Asian Doctor");
-  dropdown2.option("African Doctor"); 
-      
-  button = createButton('Choose');
-  button.position(380,120); 
+  // access the dropdown menu
+  selectGender = select('#gender');
+  selectSkin = select('#skin');
+  button = select('#button');
+  
+  // onclick function to select character and start game
   button.mousePressed(()=> {
     keyWorker.changeCharacter();
+    menu = select('#chooseCharacter');
+    menu.hide();
     start();
   })
 }
