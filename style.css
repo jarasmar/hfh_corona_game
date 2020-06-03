@@ -1,0 +1,23 @@
+body {
+  font-family: "Courier New";
+  color: black;
+  background-color: whitesmoke;
+  text-align: center;
+}
+
+#gender,
+#skin {
+  font-family: "Courier New";
+  font-size: large;
+  padding: 8px 8px;
+  border-radius: 5px;
+}
+
+button {
+  background-color: palevioletred;
+  font-family: "Courier New";
+  font-size: large;
+  font-weight: bold;
+  padding: 8px 8px;
+  border-radius: 5px;
+}

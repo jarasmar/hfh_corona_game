@@ -9,29 +9,25 @@ class KeyWorker {
     this.keyworker = maleDoctor1;
   }
 
-
-changeCharacter() {
-    if (dropdown1.value() === "Female" && dropdown2.value() === "White Doctor") {
+  changeCharacter() {
+    if (selectGender.value() === "female" && selectSkin.value() === "fair") {
       this.keyworker = femaleDoctor1;
     }
-    if (dropdown1.value() === "Male" && dropdown2.value() === "White Doctor") {
+    if (selectGender.value() === "male" && selectSkin.value() === "fair") {
       this.keyworker = maleDoctor1;
     }
-    if (dropdown1.value() === "Female" && dropdown2.value() === "Asian Doctor") {
+    if (selectGender.value() === "female" && selectSkin.value() === "medium") {
       this.keyworker = femaleDoctor2;
     }
-    if (dropdown1.value() === "Male" && dropdown2.value() === "Asian Doctor") {
+    if (selectGender.value() === "male" && selectSkin.value() === "medium") {
       this.keyworker = maleDoctor2;
     }
-    if (dropdown1.value() === "Female" && dropdown2.value() === "African Doctor") {
+    if (selectGender.value() === "female" && selectSkin.value() === "dark") {
       this.keyworker = femaleDoctor3;
     }
-    if (dropdown1.value() === "Male" && dropdown2.value() === "African Doctor") {
+    if (selectGender.value() === "male" && selectSkin.value() === "dark") {
       this.keyworker = maleDoctor3;
-    }
-    console.log("ChangeCharacter works")
-    console.log(this.keyworker)
-
+    } 
   }
 
   jump() {
@@ -47,7 +43,8 @@ changeCharacter() {
   }
 
   hits(virus){
-    return collideRectRect(this.x+40, this.y, this.size-40, this.size, virus.x, virus.y, virus.size, virus.size);
+    return collideRectRect(this.x+40, this.y, this.size-40, this.size, 
+                          virus.x, virus.y, virus.size, virus.size);
   }
 
   draw() {

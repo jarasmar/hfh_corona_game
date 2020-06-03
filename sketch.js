@@ -1,3 +1,5 @@
+let started = false;
+
 let keyWorker;
 let virus = [];
 
@@ -13,7 +15,6 @@ function preload(){
   virusRedImg = loadImage('./images/virus-red.png');
   virusBlueImg = loadImage('./images/virus-blue.png');
 
-  // backgroundImg = loadImage()
   maleDoctor1 = loadImage('./images/doctor-male-1.png');
   maleDoctor2 = loadImage('./images/doctor-male-2.png');
   maleDoctor3 = loadImage('./images/doctor-male-3.png');
@@ -26,31 +27,51 @@ function preload(){
   asiaImg = loadImage('./images/asia.png');
   africaImg = loadImage('./images/africa.png');
   americaImg = loadImage('./images/america.png');
-
-
 }
 
 function setup() {
   createCanvas(1000, 500);
+  textSize(30);
+  textFont("Courier New");
+  textStyle(BOLD);
+  
+  resetGame();
+}
+
+function resetGame() {
+  // clean previous game
+  clear();
+
+  // Hide game over div
+  gameOver = select('#gameOver');
+  gameOver.hide();
+ 
+  // show choose character
+  menu = select('#chooseCharacter');
+  menu.show();
+
   keyWorker = new KeyWorker();
 
-  dropdown1 = createSelect(); 
-  dropdown2 = createSelect(); 
+  // access the dropdown menu
+  selectGender = select('#gender');
+  selectSkin = select('#skin');
+  button = select('#startGame');
+  
+  // onclick function to select character and start game
+  button.mousePressed(()=> {
+    keyWorker.changeCharacter();
+    menu = select('#chooseCharacter');
+    menu.hide();
+    start();
+  })
+}
 
-  dropdown1.position(300, 90); 
-    dropdown1.option("Male"); 
-    dropdown1.option("Female");
-
-  dropdown2.position(400, 90); 
-    dropdown2.option("White Doctor"); 
-    dropdown2.option("Asian Doctor");
-    dropdown2.option("African Doctor"); 
-      
-    button = createButton('Choose');
-    button.position(380,120); 
-    button.mousePressed(()=> {
-      keyWorker.changeCharacter()
-    })
+function start(){
+  virus = [];
+  score = 0;
+  level = 1;
+  started = true;
+  loop();
 }
 
 function keyPressed() {
@@ -75,43 +96,49 @@ function loadBackground() {
 }
 
 function draw() {
-  // Display Background features
-  background(166);
-  background(loadBackground());
+  if (started) {
+    // Display Background features
+    background(166);
+    background(loadBackground());
+    
+    text(`Score: ${score}`, 10, 10, 200, 100);
+    text(`Level: ${level}`, 740, 10, 200, 100);
   
-  text(`Score: ${score}`, 10, 10, 70, 80);
-  text(`Level: ${level}`, 740, 10, 70, 80);
-  text(dropdown2.value(), 200, 10, 70, 80);
-
-
-  // Display Virus
-  if (frameCount > timeWas + timer && timer != 0) {
-    timeWas = frameCount;
-    timer = random(100, timer);
-    virus.push(new Virus());
-  }
-
-  for(let v of virus) {
-    v.move();
-    v.draw();
-
-    // Game Over if Collision
-    if(keyWorker.hits(v)){
-      console.log("Game Over");
-      text("Game Over", 240, 200, 100, 80);
-      noLoop(); 
+    // Display Virus
+    if (frameCount > timeWas + timer && timer != 0) {
+      timeWas = frameCount;
+      timer = random(100, timer);
+      virus.push(new Virus());
     }
 
-    // Update Score and Level
-    if (v.x == 0) {
-      score += 1;
-      if (score % 5 == 0) {
-        level += 1;
-        timer -= 50;
+    for(let v of virus) {
+      v.move();
+      v.draw();
+
+      // Game Over if Collision
+      if(keyWorker.hits(v)){
+        noLoop();
+        gameOver = select('#gameOver');
+        gameOver.show();
+        button = select('#playAgain');
+  
+        button.mousePressed(()=> {
+          started = false;
+          resetGame();
+        }) 
+      }
+
+      // Update Score and Level
+      if (v.x == 0) {
+        score += 1;
+        if (score % 5 == 0) {
+          level += 1;
+          timer -= 50;
+        }
       }
     }
+    // Display KeyWorker
+    keyWorker.draw();
+    keyWorker.move();
   }
-  // Display KeyWorker
-  keyWorker.draw();
-  keyWorker.move();
 }
