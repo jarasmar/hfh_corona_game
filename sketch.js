@@ -102,7 +102,7 @@ function draw() {
     background(loadBackground());
     
     text(`Score: ${score}`, 10, 10, 200, 100);
-    text(`Level: ${level}`, 740, 10, 200, 100);
+    text(`Level: ${level}`, 820, 10, 200, 100);
   
     // Display Virus
     if (frameCount > timeWas + timer && timer != 0) {
