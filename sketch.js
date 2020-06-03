@@ -35,12 +35,27 @@ function setup() {
   textFont("Courier New");
   textStyle(BOLD);
   
+  resetGame();
+}
+
+function resetGame() {
+  // clean previous game
+  clear();
+
+  // Hide game over div
+  gameOver = select('#gameOver');
+  gameOver.hide();
+ 
+  // show choose character
+  menu = select('#chooseCharacter');
+  menu.show();
+
   keyWorker = new KeyWorker();
 
   // access the dropdown menu
   selectGender = select('#gender');
   selectSkin = select('#skin');
-  button = select('#button');
+  button = select('#startGame');
   
   // onclick function to select character and start game
   button.mousePressed(()=> {
@@ -52,6 +67,9 @@ function setup() {
 }
 
 function start(){
+  virus = [];
+  score = 0;
+  level = 1;
   started = true;
   loop();
 }
@@ -99,9 +117,15 @@ function draw() {
 
       // Game Over if Collision
       if(keyWorker.hits(v)){
-        console.log("Game Over");
-        text("Game Over", 420, 200, 100, 80);
-        noLoop(); 
+        noLoop();
+        gameOver = select('#gameOver');
+        gameOver.show();
+        button = select('#playAgain');
+  
+        button.mousePressed(()=> {
+          started = false;
+          resetGame();
+        }) 
       }
 
       // Update Score and Level
