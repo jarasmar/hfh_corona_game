@@ -19,6 +19,7 @@ $ cd hfh_corona_game
 
 Run the project from the terminal:
 ```
+$ brew install http-server
 $ http-server
 visit http://localhost:8080/
 ```
