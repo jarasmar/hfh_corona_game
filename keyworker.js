@@ -31,7 +31,6 @@ class KeyWorker {
   }
 
   jump() {
-  jumpSound.play();
    if (this.y == height - this.size) {
      this.yVelocity = -35;
     }
