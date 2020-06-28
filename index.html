@@ -1,0 +1,41 @@
+<!-- <!DOCTYPE html> -->
+<html>
+    <head>
+        <title>Corona Game</title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body bg-color:blue>
+        <h1 >Corona Run Game</h1>
+
+        <div id='chooseCharacter'>
+            <h3>Choose your Character</h3>
+            <select id="gender">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+            <select id="skin">
+                <option value="fair">Fair Tone</option>
+                <option value="medium">Medium Tone</option>
+                <option value="dark">Dark Tone</option>
+            </select>
+            <p><button type="button" id='startGame'>
+                Start Game
+            </button></p>
+        </div>
+
+        <div id='gameOver'>
+            <h2> Game Over </h2>
+            <p><button type="button" id='playAgain'>
+                Play Again
+            </button></p>
+        </div>
+
+        <script type="text/javascript" src="sketch.js"> </script>
+        <script type="text/javascript" src="keyworker.js"> </script>
+        <script type="text/javascript" src="virus.js"> </script>
+
+        <script type="text/javascript" src="./lib/p5.min.js"> </script>
+        <script type="text/javascript" src="./lib/p5.collide2d.min.js"> </script>
+    </body>
+</html>
