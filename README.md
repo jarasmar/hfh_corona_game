@@ -2,6 +2,8 @@
 
 Project build for #hackforheroes, a two days and a half hackathon organized by Makers. The main theme was developing an app inspired by the Covid-19 crisis.
 
+Play the game here: https://jarasmar.github.io/hfh_corona_game/
+
 ![screenshot](./images/screenshot.png)
 
 ### Contributors 
